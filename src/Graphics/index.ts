@@ -18,7 +18,7 @@ export type FillStrokeOpts = {
   lineWidth?: number;
 };
 
-class Graphics {
+export class Graphics {
   private frameCount: number = 0;
   public ctx: CanvasRenderingContext2D;
   private handlerMap: GraphicsHandlerMap = {};
@@ -253,5 +253,3 @@ class Graphics {
     this.ctx.restore();
   }
 }
-
-export default Graphics;
