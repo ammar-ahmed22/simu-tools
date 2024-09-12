@@ -1,6 +1,6 @@
 {
   "name": "@ammar-ahmed22/simu-tools",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Helper classes for simulations using the Canvas API",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
