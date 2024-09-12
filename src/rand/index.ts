@@ -1,8 +1,8 @@
 /**
  * Generates a random number between min and max
- * @param min 
- * @param max 
- * @returns 
+ * @param min
+ * @param max
+ * @returns
  */
 export const random = (min: number, max: number) => {
   if (min > max) {

@@ -41,7 +41,7 @@ export class Color {
 
   /**
    * Returns the hex string for the Color
-   * @returns 
+   * @returns
    */
   hex() {
     return Color.rgba2hex([this.r, this.g, this.b, this.a]);
@@ -50,7 +50,7 @@ export class Color {
   /**
    * Converts a hex color string to it's corresponding RGBA values
    * @param hex The hex string
-   * @returns 
+   * @returns
    */
   static hex2rgba(hex: string): [number, number, number, number] {
     if (hex.startsWith("#")) {
@@ -58,13 +58,16 @@ export class Color {
     }
 
     if (hex.length !== 6 && hex.length !== 8) {
-      throw new Error("Invalid hex string length. Must be 6 or 8 characters.");
+      throw new Error(
+        "Invalid hex string length. Must be 6 or 8 characters.",
+      );
     }
     const r = parseInt(hex.slice(0, 2), 16);
     const g = parseInt(hex.slice(2, 4), 16);
     const b = parseInt(hex.slice(4, 6), 16);
 
-    const a = hex.length === 8 ? parseInt(hex.slice(6, 8), 16) / 255 : 1;
+    const a =
+      hex.length === 8 ? parseInt(hex.slice(6, 8), 16) / 255 : 1;
 
     return [r, g, b, a];
   }
@@ -72,7 +75,7 @@ export class Color {
   /**
    * Converts RGBA values to a hex color string
    * @param rgba a tuple of the RGBA values (r, g, b, a)
-   * @returns 
+   * @returns
    */
   static rgba2hex(rgba: [number, number, number, number]): string {
     let [r, g, b, a] = rgba;

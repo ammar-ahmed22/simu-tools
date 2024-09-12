@@ -22,11 +22,10 @@ export class Vec2 {
     return [this.x, this.y];
   }
 
-  
   add(v: number): Vec2;
   add(v: Vec2): Vec2;
   /**
-   * Adds a number or Vec2 value 
+   * Adds a number or Vec2 value
    * @param v The number or Vec2 to add
    */
   add(v: number | Vec2): Vec2 {
@@ -43,7 +42,7 @@ export class Vec2 {
   sub(v: number): Vec2;
   sub(v: Vec2): Vec2;
   /**
-   * Subtracts a number or Vec2 value 
+   * Subtracts a number or Vec2 value
    * @param v The number or Vec2 to subtract
    */
   sub(v: number | Vec2): Vec2 {
@@ -60,7 +59,7 @@ export class Vec2 {
   scale(m: number): Vec2;
   scale(m: Vec2): Vec2;
   /**
-   * Scales the Vec2 by a number or Vec2 value (element-wise) 
+   * Scales the Vec2 by a number or Vec2 value (element-wise)
    * @param v The number or Vec2 to scale by
    */
   scale(m: number | Vec2): Vec2 {
@@ -77,7 +76,7 @@ export class Vec2 {
   div(m: number): Vec2;
   div(m: Vec2): Vec2;
   /**
-   * Divides the Vec2 by a number or Vec2 value (element-wise) 
+   * Divides the Vec2 by a number or Vec2 value (element-wise)
    * @param v The number or Vec2 to divide by
    */
   div(m: number | Vec2): Vec2 {
@@ -94,7 +93,7 @@ export class Vec2 {
   /**
    * Limits the Vec2 magnitude to a max value
    * @param max The limit for the magnitude
-   * @returns 
+   * @returns
    */
   limit(max: number) {
     if (this.magnitude > max) {
@@ -122,14 +121,13 @@ export class Vec2 {
 
   /**
    * Normalizes the Vec2
-   * @returns 
+   * @returns
    */
   normalize(): Vec2 {
     let mag = this.magnitude;
     return this.div(mag);
   }
 
-  
   /**
    * The magnitude of the Vec2
    *
@@ -144,7 +142,7 @@ export class Vec2 {
    * Adds two Vec2's
    * @param a Vec2
    * @param b Vec2
-   * @returns 
+   * @returns
    */
   static Add(a: Vec2, b: Vec2): Vec2 {
     return new Vec2(a.x + b.x, a.y + b.y);
@@ -154,7 +152,7 @@ export class Vec2 {
    * Subtracts two Vec2's (a - b)
    * @param a Vec2
    * @param b Vec2
-   * @returns 
+   * @returns
    */
   static Subtract(a: Vec2, b: Vec2): Vec2 {
     return new Vec2(a.x - b.x, a.y - b.y);
@@ -162,9 +160,9 @@ export class Vec2 {
 
   /**
    * Computes the dot product of two Vec2's
-   * @param a Vec2 
+   * @param a Vec2
    * @param b Vec2
-   * @returns 
+   * @returns
    */
   static Dot(a: Vec2, b: Vec2): number {
     return a.x * b.x + a.y * b.y;
@@ -174,7 +172,7 @@ export class Vec2 {
    * Computes the distance between two Vec2's
    * @param a Vec2
    * @param b Vec2
-   * @returns 
+   * @returns
    */
   static Distance(a: Vec2, b: Vec2): number {
     return Vec2.Subtract(a, b).magnitude;
@@ -183,7 +181,7 @@ export class Vec2 {
   /**
    * Generates a Vec2 with a random direction and set magnitude
    * @param mag The magnitude of the Vec2
-   * @returns 
+   * @returns
    */
   static RandomDirection(mag: number): Vec2 {
     let angle = random(0, 2 * Math.PI);
@@ -194,7 +192,7 @@ export class Vec2 {
    * Generates a random Vec2 constrained to some min and max values
    * @param min The minimum x and y values as Vec2
    * @param max The maximum x and y values as Vec2
-   * @returns 
+   * @returns
    */
   static RandomConstrained(min: Vec2, max: Vec2): Vec2 {
     let x = random(min.x, max.x);
@@ -203,7 +201,7 @@ export class Vec2 {
   }
 
   /**
-   * 
+   *
    * @returns zero vector
    */
   static Zero = () => new Vec2();
