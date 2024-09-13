@@ -42,6 +42,22 @@ export class AABB {
     return p.x >= this.origin.x && p.x <= this.origin.x + this.size.x && p.y >= this.origin.y && p.y <= this.origin.y + this.size.y;
   }
 
+  /**
+   * Checks if another AABB intersects
+   * @param other The other AABB
+   * @returns 
+   */
+  public intersects(other: AABB): boolean {
+    if (this.origin.x + this.size.x < other.origin.x || other.origin.x + other.size.x < this.origin.x) {
+      return false;
+    }
+
+    if (this.origin.y + this.size.y < other.origin.y || other.origin.y + other.size.y < this.origin.y) {
+      return false;
+    }
+    return true;
+  }
+
   static fromCenter(x: number, y: number, w: number, h: number): AABB;
   static fromCenter(center: Vec2, size: Vec2): AABB;
   static fromCenter(...args: [number, number, number, number] | [Vec2, Vec2]): AABB {

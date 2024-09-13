@@ -7,6 +7,15 @@ export class Vec2 {
   ) {}
 
   /**
+   * Checks if a Vec2 is equal
+   * @param v The Vec2 to check equality with
+   * @returns boolean
+   */
+  equals(v: Vec2): boolean {
+    return v.x === this.x && v.y === this.y;
+  }
+
+  /**
    * Clones the Vec2
    * @returns A copy of the Vec2
    */

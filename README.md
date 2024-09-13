@@ -13,6 +13,7 @@
 - **Physics**: Utility to store physical values used for moving objects (position, velocity, acceleration, mass, etc.)
 - **Graphics**: Canvas context wrapper and rendering helper
 - **Polygon**: Utility to create and manipulate polygon vertices
+- **QuadTree**: QuadTree spatial partitioning using AABB's
 
 ## Installation
 ```bash

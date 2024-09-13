@@ -5,3 +5,4 @@ export * from "./Graphics";
 export * from "./Polygon";
 export * from "./AABB";
 export * from "./Physics";
+export * from "./QuadTree";
