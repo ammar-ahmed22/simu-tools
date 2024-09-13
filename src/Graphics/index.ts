@@ -22,6 +22,10 @@ export class Graphics {
   private frameCount: number = 0;
   public ctx: CanvasRenderingContext2D;
   private handlerMap: GraphicsHandlerMap = {};
+
+  private lastFrameTime: number = 0;
+  private fps: number = 0;
+  private fpsSmoothing: number = 0.1;
   constructor(public canvas: HTMLCanvasElement) {
     const ctx = canvas.getContext("2d");
     if (!ctx) {
@@ -76,7 +80,8 @@ export class Graphics {
   /**
    * Recursive game loop function
    */
-  private render() {
+  private render(time: number) {
+    this.updateFPS(time);
     if (this.handlerMap.predraw) this.handlerMap.predraw(this);
     if (this.handlerMap.draw) this.handlerMap.draw(this);
     if (this.handlerMap.postdraw) this.handlerMap.postdraw(this);
@@ -84,11 +89,19 @@ export class Graphics {
     requestAnimationFrame(this.render);
   }
 
+  private updateFPS(time: number) {
+    const delta = time - this.lastFrameTime;
+    const currFPS = 1000 / delta;
+    this.fps = this.fps * (1 - this.fpsSmoothing) + currFPS * this.fpsSmoothing;
+    this.lastFrameTime = time;
+  }
+  
   /**
    * Runs the graphics rendering
    */
   run() {
-    this.render();
+    this.lastFrameTime = performance.now();
+    this.render(0);
   }
 
   
