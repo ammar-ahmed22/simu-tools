@@ -210,6 +210,18 @@ export class Vec2 {
   }
 
   /**
+   * Creates a vector from an angle and magnitude
+   * @param angle angle in radians
+   * @param magnitude magnitude value
+   * @returns 
+   */
+  static FromAngle(angle: number, magnitude: number) {
+    const x = Math.cos(angle);
+    const y = Math.sin(angle);
+    return new Vec2(magnitude * x, magnitude * y);
+  }
+
+  /**
    *
    * @returns zero vector
    */

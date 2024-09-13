@@ -142,4 +142,12 @@ describe("Vec2", () => {
     expect(r.y).toBeGreaterThanOrEqual(10);
     expect(r.y).toBeLessThanOrEqual(50);
   });
+
+  it("checks equality", () => {
+    const a = new Vec2(1, 2);
+    const b = new Vec2(1, 2);
+    expect(a.equals(b)).toBe(true);
+  })
+
+  
 });
