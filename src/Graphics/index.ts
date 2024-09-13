@@ -24,7 +24,7 @@ export class Graphics {
   private handlerMap: GraphicsHandlerMap = {};
 
   private lastFrameTime: number = 0;
-  private fps: number = 0;
+  public fps: number = 60;
   private fpsSmoothing: number = 0.1;
   constructor(public canvas: HTMLCanvasElement) {
     const ctx = canvas.getContext("2d");
@@ -95,7 +95,7 @@ export class Graphics {
     this.fps = this.fps * (1 - this.fpsSmoothing) + currFPS * this.fpsSmoothing;
     this.lastFrameTime = time;
   }
-  
+
   /**
    * Runs the graphics rendering
    */
