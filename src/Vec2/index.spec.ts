@@ -149,5 +149,9 @@ describe("Vec2", () => {
     expect(a.equals(b)).toBe(true);
   })
 
-  
+  it("creates a vector from an angle", () => {
+    const v = Vec2.FromAngle(Math.PI / 4, 1);
+    expect(v.x).toBeCloseTo(Math.sqrt(2) / 2);
+    expect(v.y).toBeCloseTo(Math.sqrt(2) / 2);
+  })
 });
