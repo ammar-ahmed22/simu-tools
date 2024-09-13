@@ -6,11 +6,15 @@ export type QuadTreeData<T> = {
   data: T
 }
 
-export class QuadTree<T> {
-  children?: QuadTree<T>[];
+export class QuadTree<T, S = any> {
+  children?: QuadTree<T, S>[];
+  public state?: S;
   public data?: QuadTreeData<T>;
   constructor(public aabb: AABB) {}
-
+  public setState(state: S) {
+    this.state = state;
+  }
+  
   public insert(p: Vec2, data: T): boolean {
     if (this.aabb.contains(p)) {
       if (!this.data) {
