@@ -50,6 +50,7 @@ export class QuadTree<T, S = any> {
       const { pos, data } = this.data;
       for (let child of this.children) {
         if (child.insert(pos, data)) {
+          this.data = undefined;
           return;
         }
       }
