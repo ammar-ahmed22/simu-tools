@@ -58,6 +58,6 @@
     "format": "prettier --write .",
     "clean": "rimraf ./dist",
     "rollup": "yarn clean && rollup -c",
-    "release": "yarn build && yarn publish --access public"
+    "release": "yarn build && yarn publish --access public && git push --follow-tags"
   }
 }
