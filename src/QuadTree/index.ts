@@ -16,30 +16,7 @@ export class QuadTree<T, S = any> {
   }
   
   public insert(p: Vec2, data: T): boolean {
-    if (this.aabb.contains(p)) {
-      // if (this.children) {
-      //   for (let child of this.children) {
-      //     if (child.insert(p, data)) {
-      //       return true;
-      //     }
-      //   }
-
-      //   if (!this.data) {
-      //     this.data = { pos: p, data };
-      //     return true;
-      //   }
-
-      //   if (!this.children) {
-      //     this.subdivide();
-      //   }
-
-      //   for (let child of this.children) {
-      //     if (child.insert(p, data)) {
-      //       return true;
-      //     }
-      //   }
-      //   // this.data = undefined;
-      // }
+    if (this.aabb.contains(p)) {      
       if (this.children) {
         for (let child of this.children) {
           if (child.insert(p, data)) {
@@ -104,7 +81,24 @@ export class QuadTree<T, S = any> {
         child.query(query, results);
       }
     }
-
-    // return data;
   }
+
+  static postOrder<T, S = any>(node: QuadTree<T, S>, callbackfn: (node: QuadTree<T, S>) => void) {
+    if (node.children) {
+      for (let child of node.children) {
+        QuadTree.postOrder(child, callbackfn);
+      }
+    }
+
+    callbackfn(node);
+  } 
+
+  static preOrder<T, S = any>(node: QuadTree<T, S>, callbackfn: (node: QuadTree<T, S>) => void) {
+    callbackfn(node);
+    if (node.children) {
+      for (let child of node.children) {
+        QuadTree.preOrder(child, callbackfn);
+      }
+    }
+  } 
 }
