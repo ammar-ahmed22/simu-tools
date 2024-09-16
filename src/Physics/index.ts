@@ -25,4 +25,8 @@ export class Physics {
   setMass(m: number) {
     this.mass = m;
   }
+
+  addForce(f: Vec2) {
+    this.acc.add(f.clone().div(this.mass));
+  }
 }
