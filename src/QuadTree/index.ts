@@ -17,20 +17,43 @@ export class QuadTree<T, S = any> {
   
   public insert(p: Vec2, data: T): boolean {
     if (this.aabb.contains(p)) {
-      if (!this.data) {
-        this.data = { pos: p, data };
-        return true;
-      }
+      if (this.children) {
+        for (let child of this.children) {
+          if (child.insert(p, data)) {
+            return true;
+          }
+        }
 
-      if (!this.children) {
-        this.subdivide();
-      }
-
-      for (let child of this.children!) {
-        if (child.insert(p, data)) {
+        if (!this.data) {
+          this.data = { pos: p, data };
           return true;
         }
+
+        if (!this.children) {
+          this.subdivide();
+        }
+
+        for (let child of this.children) {
+          if (child.insert(p, data)) {
+            return true;
+          }
+        }
+        // this.data = undefined;
       }
+      // if (!this.data) {
+      //   this.data = { pos: p, data };
+      //   return true;
+      // }
+
+      // if (!this.children) {
+      //   this.subdivide();
+      // }
+
+      // for (let child of this.children!) {
+      //   if (child.insert(p, data)) {
+      //     return true;
+      //   }
+      // }
     }
 
     return false;
