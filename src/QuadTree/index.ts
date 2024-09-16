@@ -15,6 +15,12 @@ export class QuadTree<T, S = any> {
     this.state = state;
   }
   
+  /**
+   * Inserts into the tree
+   * @param p The position for the insertion
+   * @param data Associated data for the insertion
+   * @returns 
+   */
   public insert(p: Vec2, data: T): boolean {
     if (this.aabb.contains(p)) {      
       if (this.children) {
@@ -45,7 +51,12 @@ export class QuadTree<T, S = any> {
 
     return false;
   }
-  public subdivide() {
+
+  /**
+   * Subdivides the tree
+   * @returns 
+   */
+  private subdivide() {
     if (this.children) return;
     const { origin, size } = this.aabb;
     const half = size.clone().div(2);
@@ -68,6 +79,12 @@ export class QuadTree<T, S = any> {
     }
   }
 
+  /**
+   * Queries the tree for values that are contained within an AABB
+   * @param query The query AABB area
+   * @param results The results of the query (will be mutated)
+   * @returns 
+   */
   public query(query: AABB, results: QuadTreeData<T>[] = []) {
     if (!this.aabb.intersects(query)) {
       return;
@@ -83,6 +100,11 @@ export class QuadTree<T, S = any> {
     }
   }
 
+  /**
+   * Post-order traversal of the tree
+   * @param node The starting node
+   * @param callbackfn Callback function for each node in the traversal
+   */
   static postOrder<T, S = any>(node: QuadTree<T, S>, callbackfn: (node: QuadTree<T, S>) => void) {
     if (node.children) {
       for (let child of node.children) {
@@ -93,6 +115,11 @@ export class QuadTree<T, S = any> {
     callbackfn(node);
   } 
 
+  /**
+   * Pre-order traversal of the tree
+   * @param node The starting node
+   * @param callbackfn Callback function for each node in the traversal
+   */
   static preOrder<T, S = any>(node: QuadTree<T, S>, callbackfn: (node: QuadTree<T, S>) => void) {
     callbackfn(node);
     if (node.children) {
