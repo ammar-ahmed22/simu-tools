@@ -40,6 +40,15 @@ export class QuadTree<T, S = any> {
       //   }
       //   // this.data = undefined;
       // }
+      if (this.children) {
+        for (let child of this.children) {
+          if (child.insert(p, data)) {
+            return true;
+          }
+        }
+      }
+
+
       if (!this.data) {
         this.data = { pos: p, data };
         return true;
