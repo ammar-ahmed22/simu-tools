@@ -43,6 +43,7 @@ export class QuadTree<T, S = any> {
       if (this.children) {
         for (let child of this.children) {
           if (child.insert(p, data)) {
+            this.data = undefined;
             return true;
           }
         }
